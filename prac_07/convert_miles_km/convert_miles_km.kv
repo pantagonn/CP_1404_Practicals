@@ -1,0 +1,22 @@
+BoxLayout:
+    orientation: "vertical"
+    BoxLayout:
+        orientation: "horizontal"
+        TextInput:
+            text: ""
+            id: m_input
+            on_text: app.handle_calculate()
+        BoxLayout:
+            orientation: "vertical"
+            Button:
+                text: "Up"
+                on_press: app.handle_increment(1)
+            Button:
+                text: "Down"
+                on_press: app.handle_increment(-1)
+    #Button:
+        #id: convert_button
+        #on_press: app.handle_calculate()
+    Label:
+        id: km_output
+        text: app.km_output
