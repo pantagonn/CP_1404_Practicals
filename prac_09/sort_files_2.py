@@ -22,14 +22,22 @@ def main():
                 file_extensions[file_extension].append(filename)
             else:
                 file_extensions[file_extension] = [filename]
+    # Version 2
+    file_types = {}
+    for file_extension in file_extensions.keys():
+        file_type = input(f"What category would you like to sort {file_extension} files into? ")
+        if file_type in file_types:
+            file_types[file_type] += file_extensions[file_extension]
+        else:
+            file_types[file_type] = file_extensions[file_extension]
 
-    for file_extension, files in file_extensions.items():
+    for file_type, files in file_types.items():
         try:
-            os.mkdir(file_extension)
+            os.mkdir(file_type)
         except FileExistsError:
             pass
         for filename in files:
-            shutil.move(filename, f"{file_extension}/" + filename)
+            shutil.move(filename, f"{file_type}/" + filename)
 
 
 main()
