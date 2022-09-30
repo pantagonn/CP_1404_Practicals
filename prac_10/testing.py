@@ -9,7 +9,7 @@ from prac_06.car import Car
 
 def repeat_string(s, n):
     """Repeat string s, n times, with spaces in between."""
-    return s * n
+    return " ".join([s] * n)
 
 
 def is_long_word(word, length=5):
@@ -22,7 +22,7 @@ def is_long_word(word, length=5):
     >>> is_long_word("Python", 6)
     True
     """
-    return len(word) > length
+    return len(word) >= length
 
 
 def run_tests():
@@ -46,13 +46,16 @@ def run_tests():
     # using the value passed in or the default
     # You should test both of these
     test_car = Car(fuel=10)
+    assert test_car.fuel == 10, "Cars fuel is not set correctly"
+    test_car.fuel = 100
+    assert test_car.fuel == 100, "Car fuel is not set correctly"
 
 
 run_tests()
 
 #Uncomment the following line and run the doctests
 # (PyCharm may see your >>> doctest comments and run doctests anyway.)
-# doctest.testmod()
+doctest.testmod()
 
 # Fix the failing is_long_word function
 # (don't change the tests, change the function!)
